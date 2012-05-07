@@ -17,9 +17,9 @@
 -->
 <antlib xmlns:http="antlib:org.apache.ant.github">
 <!--
-  <taskdef name="httpget"
+  <taskdef name="gitgetpulls"
            classname="org.apache.ant.http.HttpGet"/>
-  <taskdef name="httppost"
+  <taskdef name="gitaddcomment"
            classname="org.apache.ant.http.HttpPost"/>
   <taskdef name="httphead"
            classname="org.apache.ant.http.HttpHead"/>
