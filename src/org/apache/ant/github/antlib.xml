@@ -16,12 +16,10 @@
   limitations under the License.
 -->
 <antlib xmlns:http="antlib:org.apache.ant.github">
-<!--
+
   <taskdef name="gitgetpulls"
-           classname="org.apache.ant.http.HttpGet"/>
+           classname="org.apache.ant.http.GitPulls"/>
   <taskdef name="gitaddcomment"
-           classname="org.apache.ant.http.HttpPost"/>
-  <taskdef name="httphead"
-           classname="org.apache.ant.http.HttpHead"/>
--->
+           classname="org.apache.ant.http.GitComment"/>
+
 </antlib>
