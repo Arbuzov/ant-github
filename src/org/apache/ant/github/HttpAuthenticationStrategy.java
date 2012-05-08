@@ -16,53 +16,41 @@
  *
  */
 
-package main.org.apache.ant.github;
+
+package org.apache.ant.github;
 
 import org.apache.tools.ant.BuildException;
 
 import java.net.URLConnection;
 
-
 /**
- * this class implements basic auth, the one that shouldn't be used except over
- * an encrypted link or trusted network.
+ * this interface is for use by classes which authenticate connections.
  *
  * @created 20 March 2001
  */
 
-public class HttpBasicAuth implements HttpAuthenticationStrategy {
+public interface HttpAuthenticationStrategy {
     /**
-     * string used for basic auth {@value}.
+     * property used in the request. {@value}
      */
-    public static final String BASIC_AUTH = "BASIC ";
+    String AUTH_PROPERTY = "Authorization";
 
 
     /**
-     * Sets the AuthenticationHeader attribute of the HttpAuthStrategy object
+     * Sets the AuthenticationHeader.
      *
      * @param requestConnection  The current request
      * @param responseConnection any previous request, which can contain a
      *                           challenge for the next round. Will often be
      *                           null
-     * @param username           the current user name
+     * @param user               the current user name
      * @param password           the current password
      */
     public void setAuthenticationHeader(URLConnection requestConnection,
                                         URLConnection responseConnection,
-                                        String username, String password) {
+                                        String user, String password)
+            throws BuildException;
 
-        if (username != null) {
-            password = username == null ? "" : password;
-            String encodeStr = username + ":" + password;
-            char[] encodedPass;
-            String encodedPassStr;
 
-            Base64Encode encoder = new Base64Encode();
-            encodedPass = encoder.encodeBase64(encodeStr.getBytes());
-            encodedPassStr = new String(encodedPass);
-            String authStr = BASIC_AUTH + encodedPassStr;
-            requestConnection.setRequestProperty(AUTH_PROPERTY, authStr);
-        }
-    }
 }
 

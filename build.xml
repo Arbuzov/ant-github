@@ -1,4 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project default="distribution" name="http">
-  
+<project default="antlib" name="http">
+	
+	<target name="setup-properties">
+	    <property name="root" value="."/>
+	    <property name="root.bin" value="${root}/bin"/>
+		<property name="root.src" value="${root}/src"/>
+		<property name="common.basedir" value="${root}/common"/>
+		<property name="jarname" value="ant-github.jar"/>
+	</target>
+	
+	  <target name="setup" depends="setup-properties">
+	    <mkdir dir="${root.bin}"/>
+	  </target>	
+	
+	  <target name="compile" depends="setup">
+	    <javac 
+	      srcdir="./src"
+	      destdir="${root.bin}"
+	      includeantruntime="true"
+	      />
+	  </target>
+
+	  <target name="antlib" depends="compile">
+	    <copy todir="${root.bin}">
+	      <fileset dir="./src" includes="**/*.xml,**/*.properties"/>
+	    </copy>
+	    <jar destfile="${jarname}">
+	      <fileset dir="${root.bin}"/>
+	      <metainf file="NOTICE"/>
+	      <metainf file="${common.basedir}/LICENSE"/>
+	    </jar>
+	  </target>	
 </project>

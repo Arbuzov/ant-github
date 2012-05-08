@@ -16,7 +16,7 @@
  *
  */
 
-package main.org.apache.ant.github;
+package org.apache.ant.github;
 
 /**
  * This code handles Base64 encoding for basic authentication and the like.

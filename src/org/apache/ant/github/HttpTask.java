@@ -17,7 +17,7 @@
  */
 
 
-package main.org.apache.ant.github;
+package org.apache.ant.github;
 
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Project;
@@ -769,8 +769,8 @@ public abstract class HttpTask extends Task {
         }
 
         StringBuffer buf = new StringBuffer(getURL());
-        //this devious little line code recognises a parameter string already
-        //in the source url, and if so doesnt add a new one
+        //this devious little line code recognizes a parameter string already
+        //in the source url, and if so doesn't add a new one
         buf.append(source.indexOf('?') == -1 ? '?' : '&');
         HttpRequestParameter param;
 
@@ -791,7 +791,7 @@ public abstract class HttpTask extends Task {
      * query for the request wanting parameters on the url default is true,
      * subclasses may want to change
      *
-     * @return true if a url should have params attached.
+     * @return true if a url should have parameters attached.
      */
 
     protected boolean areParamsAddedToUrl() {
@@ -799,9 +799,9 @@ public abstract class HttpTask extends Task {
     }
 
     /**
-     * get the auth policy a null return value means 'no policy chosen'
+     * get the authorization policy a null return value means 'no policy chosen'
      *
-     * @return current authorisation strategy or null
+     * @return current authorization strategy or null
      */
 
     protected HttpAuthenticationStrategy getAuthStrategy() {

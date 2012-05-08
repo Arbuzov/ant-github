@@ -16,7 +16,7 @@
  *
  */
 
-package main.org.apache.ant.github;
+package org.apache.ant.github;
 
 import org.apache.tools.ant.ProjectComponent;
 

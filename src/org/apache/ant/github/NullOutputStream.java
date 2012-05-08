@@ -16,7 +16,7 @@
  *
  */
 
-package main.org.apache.ant.github;
+package org.apache.ant.github;
 
 import java.io.IOException;
 import java.io.OutputStream;
