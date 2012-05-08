@@ -21,5 +21,7 @@
            classname="org.apache.ant.http.GitPulls"/>
   <taskdef name="gitaddcomment"
            classname="org.apache.ant.http.GitComment"/>
+  <taskdef name="gitgetuser"
+           classname="org.apache.ant.http.GitUser"/>
 
 </antlib>
