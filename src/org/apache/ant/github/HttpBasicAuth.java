@@ -18,13 +18,11 @@
 
 package org.apache.ant.github;
 
-import org.apache.tools.ant.BuildException;
-
 import java.net.URLConnection;
 
 
 /**
- * this class implements basic auth, the one that shouldn't be used except over
+ * this class implements basic Authentication, the one that shouldn't be used except over
  * an encrypted link or trusted network.
  *
  * @created 20 March 2001
@@ -32,7 +30,7 @@ import java.net.URLConnection;
 
 public class HttpBasicAuth implements HttpAuthenticationStrategy {
     /**
-     * string used for basic auth {@value}.
+     * string used for basic Authentication {@value}.
      */
     public static final String BASIC_AUTH = "BASIC ";
 

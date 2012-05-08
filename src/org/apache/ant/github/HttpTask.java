@@ -103,12 +103,14 @@ public abstract class HttpTask extends Task {
     /**
      * parameters to send on a request.
      */
-    private Vector params = new Vector();
+    @SuppressWarnings("rawtypes")
+	private Vector params = new Vector();
 
     /**
      * headers to send on a request
      */
-    private Vector headers = new Vector();
+    @SuppressWarnings("rawtypes")
+	private Vector headers = new Vector();
 
     /**
      * cache policy.
@@ -347,7 +349,8 @@ public abstract class HttpTask extends Task {
      *
      * @return The RequestParameters value
      */
-    public Vector getRequestParameters() {
+    @SuppressWarnings("rawtypes")
+	public Vector getRequestParameters() {
         return params;
     }
 
@@ -637,7 +640,8 @@ public abstract class HttpTask extends Task {
      * @param param The feature to be added to the HttpRequestParameter
      *              attribute
      */
-    public void addParam(HttpRequestParameter param) {
+    @SuppressWarnings("unchecked")
+	public void addParam(HttpRequestParameter param) {
         params.add(param);
     }
 
@@ -647,7 +651,8 @@ public abstract class HttpTask extends Task {
      *
      * @param header The feature to be added to the Header attribute
      */
-    public void addHeader(HttpRequestParameter header) {
+    @SuppressWarnings("unchecked")
+	public void addHeader(HttpRequestParameter header) {
         headers.add(header);
     }
 

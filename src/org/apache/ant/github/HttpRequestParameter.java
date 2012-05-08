@@ -98,7 +98,8 @@ public class HttpRequestParameter extends ProjectComponent {
      *
      * @return a string for informational purposes
      */
-    public String toString() {
+    @SuppressWarnings("deprecation")
+	public String toString() {
         return URLEncoder.encode(getName()) +
                 '=' + URLEncoder.encode(getValue());
     }
