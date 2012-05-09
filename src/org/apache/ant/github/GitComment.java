@@ -9,5 +9,10 @@ public class GitComment extends HttpTask {
 		// TODO Auto-generated method stub
 		return "GET";
 	}
+	
+	@Override
+    public String getURL() {
+        return source;
+    }
 
 }

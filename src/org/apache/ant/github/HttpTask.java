@@ -69,7 +69,7 @@ public abstract class HttpTask extends Task {
     /**
      * source URL- required.
      */
-    private String source;
+    public  String source="";
 
     /**
      * destination for download.
@@ -717,6 +717,7 @@ public abstract class HttpTask extends Task {
     protected void verifyArguments()
             throws BuildException {
         //check remote params -but only create an exception, not throw it
+    	System.out.println(getURL());
         if (getURL() == null) {
             throw new BuildException("target URL missing");
         }
