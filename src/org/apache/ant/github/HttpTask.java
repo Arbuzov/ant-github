@@ -58,6 +58,9 @@ public abstract class HttpTask extends Task {
      * this sets the size of the buffer and the hash for download (Kilobytes).
      */
 
+    
+    protected String reqt="";
+    
     protected int blockSize = 64;
 
     /**
@@ -69,7 +72,7 @@ public abstract class HttpTask extends Task {
     /**
      * source URL- required.
      */
-    public  String source="";
+    public  String source;
 
     /**
      * destination for download.
@@ -549,10 +552,16 @@ public abstract class HttpTask extends Task {
 
             //if it we were saving to a byte array, then
             //set the destination property with its contents
-            if (out instanceof ByteArrayOutputStream) {
-            	this.parseJson(out.toString());
-                getProject().setProperty(destProperty,
-                        out.toString());
+            if (out instanceof ByteArrayOutputStream) {            	
+            	
+            	String sysparam = out.toString();
+            	
+            	if(this.reqt.equals("GitPulls"))
+            	{
+            		sysparam = this.parseJson(out.toString());
+            	}
+            	
+                getProject().setProperty(destProperty,sysparam);
             }
             
             //everything is downloaded; close files

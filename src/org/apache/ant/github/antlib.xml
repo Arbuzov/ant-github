@@ -23,5 +23,4 @@
            classname="org.apache.ant.github.GitComment"/>
   <taskdef name="gitgetuser"
            classname="org.apache.ant.github.GitUser"/>
-
 </antlib>

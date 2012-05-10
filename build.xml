@@ -1,47 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="antlib" name="http">
-	
-	<taskdef name="gitgetpulls" classname="org.apache.ant.github.GitPulls" 
-	            classpath="${antform.home}/lib/ant-github.jar"/>
-	<taskdef name="gitaddcomment" classname="org.apache.ant.github.GitComment" 
-	            classpath="${antform.home}/lib/ant-github.jar"/>
-	<taskdef name="gitgetuser" classname="org.apache.ant.github.GitUser" 
-	            classpath="${antform.home}/lib/ant-github.jar"/>
+
+	<taskdef resource="org/apache/ant/github/antlib.xml">
+		<classpath path="${ant.home}/lib/ant-github.jar" />
+	</taskdef>
+
+	<taskdef resource="org/realityforge/antix/antlib.xml">
+		<classpath path="${ant.home}/lib/antix-1.0.0.jar" />
+	</taskdef>
 
 	<target name="setup-properties">
-	    <property name="root" value="."/>
-	    <property name="root.bin" value="${root}/bin"/>
-		<property name="root.src" value="${root}/src"/>
-		<property name="common.basedir" value="${root}/common"/>
-		<property name="jarname" value="ant-github.jar"/>
+		<property name="root" value="." />
+		<property name="root.bin" value="${root}/bin" />
+		<property name="root.src" value="${root}/src" />
+		<property name="common.basedir" value="${root}/common" />
+		<property name="jarname" value="ant-github.jar" />
 	</target>
-	
-	  <target name="setup" depends="setup-properties">
-	    <mkdir dir="${root.bin}"/>
-	  </target>	
-	
-	  <target name="compile" depends="setup">
-	    <javac 
-	      srcdir="./src"
-	      destdir="${root.bin}"
-	      includeantruntime="true"
-	      />
-	  </target>
 
-	  <target name="antlib" depends="compile">
-	    <copy todir="${root.bin}">
-	      <fileset dir="./src" includes="**/*.xml,**/*.properties"/>
-	    </copy>
-	    <jar destfile="${jarname}">
-	      <fileset dir="${root.bin}"/>
-	      <metainf file="NOTICE"/>
-	      <metainf file="${common.basedir}/LICENSE"/>
-	    </jar>
-	  </target>
-	<target name="test" depends="antlib">
-		<gitgetpulls username="arbuzov" user="welltime" reponame="well_package" password="int1144282" destinationProperty="test.txt"/>
-		<!--
-		<echo>${test.txt}</echo>
-		-->
+	<target name="setup" depends="setup-properties">
+		<mkdir dir="${root.bin}" />
+	</target>
+
+	<target name="compile" depends="setup">
+		<javac srcdir="./src" destdir="${root.bin}" includeantruntime="true" />
+	</target>
+
+	<target name="antlib" depends="compile">
+		<copy todir="${root.bin}">
+			<fileset dir="./src" includes="**/*.xml,**/*.properties" />
+		</copy>
+		<jar destfile="${jarname}">
+			<fileset dir="${root.bin}" />
+			<metainf file="NOTICE" />
+			<metainf file="${common.basedir}/LICENSE" />
+		</jar>
+		<copy file="${jarname}" todir="${ant.home}/lib" />
+	</target>
+	<target name="test">
+		<gitgetpulls username="arbuzov" user="welltime" reponame="well_package" password="int1144282" destinationProperty="test.txt" />
+	</target>
+	<target name="getPatches" depends="test">
+		<forEach property="patch" list="${test.txt}">
+			<sequential>
+				<echo message="Patch: @{patch}" />
+				<httpget authtype="basic" password="int1144282" username="arbuzov" url="@{patch}" destfile="test.txt" />
+			</sequential>
+		</forEach>
 	</target>
 </project>

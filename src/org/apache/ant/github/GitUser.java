@@ -14,4 +14,10 @@ public class GitUser extends HttpTask {
         return source;
     }
 
+	@Override
+	protected String parseJson(String s) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

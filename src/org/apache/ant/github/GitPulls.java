@@ -23,6 +23,7 @@ public class GitPulls extends HttpTask {
 	@Override
 	protected String getRequestMethod() {
 		// TODO Auto-generated method stub
+		this.reqt="GitPulls";
 		return "GET";
 	}
 	
@@ -32,15 +33,18 @@ public class GitPulls extends HttpTask {
     }
 	
 	public String parseJson(String json) {
+		String patches="";
         try {
         	JSONArray jsob = new JSONArray(json.toString());
-        	System.out.println(((JSONObject)jsob.get(0)).get("patch_url"));
+        	for(int i=0;i<jsob.length();i++)
+        	{
+        		patches+=(((JSONObject)jsob.get(i)).get("patch_url")+" ");
+        	}
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         //System.out.println(out.toString().replace("}", "}\n").replace("]", "]\n\n").replace(",\"", "\n,\""));
-		return "";
+		return patches;
 	}
 
 }
