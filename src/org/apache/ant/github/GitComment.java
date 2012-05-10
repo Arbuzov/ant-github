@@ -4,6 +4,12 @@ public class GitComment extends HttpTask {
 
 	private String source="https://api.github.com/";
 	
+	private String comment="";
+	
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
 	@Override
 	protected String getRequestMethod() {
 		// TODO Auto-generated method stub
@@ -14,5 +20,11 @@ public class GitComment extends HttpTask {
     public String getURL() {
         return source;
     }
+
+	@Override
+	protected String parseJson(String s) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
