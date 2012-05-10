@@ -48,4 +48,10 @@ public class HttpGet extends HttpTask {
     public String getRequestMethod() {
         return "GET";
     }
+
+	@Override
+	protected String parseJson(String s) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
