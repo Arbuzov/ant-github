@@ -39,6 +39,9 @@
 	    </jar>
 	  </target>
 	<target name="test" depends="antlib">
-		<gitgetpulls username="arbuzov" user="welltime" reponame="well_package" password="int1144282" destfile="test.txt"/>
+		<gitgetpulls username="arbuzov" user="welltime" reponame="well_package" password="int1144282" destinationProperty="test.txt"/>
+		<!--
+		<echo>${test.txt}</echo>
+		-->
 	</target>
 </project>

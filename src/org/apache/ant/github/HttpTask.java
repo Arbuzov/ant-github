@@ -78,7 +78,7 @@ public abstract class HttpTask extends Task {
     /**
      * verbose flag gives extra information.
      */
-    private boolean verbose = false;
+    private boolean verbose = true;
 
     /**
      * timestamp based download flag. off by default.
@@ -529,17 +529,19 @@ public abstract class HttpTask extends Task {
 
             //now start download.
             byte[] buffer = new byte[blockSize * 1024];
+            
             int length;
 
             while ((length = is.read(buffer)) >= 0 &&
                     (contentLength == -1 || bytesRead < contentLength)) {
                 bytesRead += length;
+                
                 out.write(buffer, 0, length);
                 if (verbose) {
                     showProgressChar('.');
                 }
             }
-
+            //System.out.println(stbuff);
             //finished successfully - clean up.
             if (verbose) {
                 showProgressChar('\n');
@@ -548,10 +550,11 @@ public abstract class HttpTask extends Task {
             //if it we were saving to a byte array, then
             //set the destination property with its contents
             if (out instanceof ByteArrayOutputStream) {
+            	this.parseJson(out.toString());
                 getProject().setProperty(destProperty,
                         out.toString());
             }
-
+            
             //everything is downloaded; close files
             out.flush();
             out.close();
@@ -665,7 +668,8 @@ public abstract class HttpTask extends Task {
      */
     protected abstract String getRequestMethod();
 
-
+    protected abstract String parseJson(String s);
+    
     /**
      * determine the timestamp to use if the flag is set and the local file
      * actually exists.

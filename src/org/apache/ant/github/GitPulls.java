@@ -1,5 +1,9 @@
 package org.apache.ant.github;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class GitPulls extends HttpTask {
 
 	private String source="https://api.github.com/repos/";
@@ -26,5 +30,17 @@ public class GitPulls extends HttpTask {
     public String getURL() {
         return source+user+"/"+reponame+"/pulls";
     }
+	
+	public String parseJson(String json) {
+        try {
+        	JSONArray jsob = new JSONArray(json.toString());
+        	System.out.println(((JSONObject)jsob.get(0)).get("patch_url"));
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        //System.out.println(out.toString().replace("}", "}\n").replace("]", "]\n\n").replace(",\"", "\n,\""));
+		return "";
+	}
 
 }
