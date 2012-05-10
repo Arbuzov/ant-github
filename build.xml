@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="antlib" name="http">
 	
+	<taskdef name="gitgetpulls" classname="org.apache.ant.github.GitPulls" 
+	            classpath="${antform.home}/lib/ant-github.jar"/>
+	<taskdef name="gitaddcomment" classname="org.apache.ant.github.GitComment" 
+	            classpath="${antform.home}/lib/ant-github.jar"/>
+	<taskdef name="gitgetuser" classname="org.apache.ant.github.GitUser" 
+	            classpath="${antform.home}/lib/ant-github.jar"/>
+
 	<target name="setup-properties">
 	    <property name="root" value="."/>
 	    <property name="root.bin" value="${root}/bin"/>
@@ -30,5 +37,8 @@
 	      <metainf file="NOTICE"/>
 	      <metainf file="${common.basedir}/LICENSE"/>
 	    </jar>
-	  </target>	
+	  </target>
+	<target name="test" depends="antlib">
+		<gitgetpulls username="arbuzov" user="welltime" reponame="well_package" password="int1144282" destfile="test.txt"/>
+	</target>
 </project>

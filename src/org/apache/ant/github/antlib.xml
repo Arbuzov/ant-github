@@ -18,10 +18,10 @@
 <antlib xmlns:http="antlib:org.apache.ant.github">
 
   <taskdef name="gitgetpulls"
-           classname="org.apache.ant.http.GitPulls"/>
+           classname="org.apache.ant.github.GitPulls"/>
   <taskdef name="gitaddcomment"
-           classname="org.apache.ant.http.GitComment"/>
+           classname="org.apache.ant.github.GitComment"/>
   <taskdef name="gitgetuser"
-           classname="org.apache.ant.http.GitUser"/>
+           classname="org.apache.ant.github.GitUser"/>
 
 </antlib>

@@ -2,7 +2,7 @@ package org.apache.ant.github;
 
 public class GitPulls extends HttpTask {
 
-	private String source="https://api.github.com/";
+	private String source="https://api.github.com/repos/";
 	
 	private String user;
 	
@@ -24,7 +24,7 @@ public class GitPulls extends HttpTask {
 	
 	@Override
     public String getURL() {
-        return source;
+        return source+user+"/"+reponame+"/pulls";
     }
 
 }
