@@ -498,7 +498,7 @@ public abstract class HttpTask extends Task {
             //again, though we should have got to this point earlier.
 
             if (is == null) {
-                log("Can't get " + url, Project.MSG_ERR);
+                log("Can't get " + url);
                 if (getFailOnError()) {
                     return;
                 }
@@ -508,13 +508,12 @@ public abstract class HttpTask extends Task {
             //pick a file or null stream for saving content
             OutputStream out = null;
             if (destFile != null) {
-                log("Saving output to " + destFile, Project.MSG_DEBUG);
+                log("Saving output to " + destFile);
                 out = new FileOutputStream(destFile);
             } else {
                 if (destProperty != null) {
                     //save contents to a property
-                    log("Saving output to property " + destProperty,
-                            Project.MSG_DEBUG);
+                    log("Saving output to property " + destProperty);
                     out = new ByteArrayOutputStream(blockSize * 1024);
                 } else {
                     //discard everything
@@ -623,14 +622,14 @@ public abstract class HttpTask extends Task {
                 if (failOnError) {
                     throw new BuildException(failureString);
                 } else {
-                    log(failureString, Project.MSG_ERR);
+                    log(failureString);
                 }
             }
 
         }
         catch (IOException ioe) {
             log("Error performing " + getRequestMethod() + " on " + url +
-                    " : " + ioe.toString(), Project.MSG_ERR);
+                    " : " + ioe.toString());
             if (failOnError) {
                 throw new BuildException(ioe);
             }
@@ -855,10 +854,10 @@ public abstract class HttpTask extends Task {
 
     protected URLConnection makeConnectionWithAuthHandling(URLConnection connection)
             throws BuildException, IOException {
-        log("Connecting to " + connection.toString(), Project.MSG_DEBUG);
+        log("Connecting to " + connection.toString());
         connection.connect();
         URLConnection returnConnection = connection;
-        log("connected", Project.MSG_DEBUG);
+        log("connected");
         if (connection instanceof HttpURLConnection) {
             HttpURLConnection httpConnection = (HttpURLConnection) connection;
             if (getResponseCode(httpConnection) ==
@@ -867,8 +866,7 @@ public abstract class HttpTask extends Task {
                     && authType == AUTH_DIGEST) {
                 //duplicating all the settings then reconnect
                 //and return it
-                log("Digest authentication needed but not yet supported",
-                        Project.MSG_DEBUG);
+                log("Digest authentication needed but not yet supported");
             }
         }
 
@@ -922,9 +920,8 @@ public abstract class HttpTask extends Task {
                 break;
             }
             catch (FileNotFoundException ex) {
-                log("Swallowed FileNotFoundException in getResponseCode",
-                        Project.MSG_VERBOSE);
-                log(ex.toString(), Project.MSG_DEBUG);
+                log("Swallowed FileNotFoundException in getResponseCode");
+                log(ex.toString());
                 swallowed = ex;
             }
         }
@@ -965,9 +962,8 @@ public abstract class HttpTask extends Task {
                 break;
             }
             catch (FileNotFoundException ex) {
-                log("Swallowed IO exception in getInputStream",
-                        Project.MSG_VERBOSE);
-                log(ex.toString(), Project.MSG_DEBUG);
+                log("Swallowed IO exception in getInputStream");
+                log(ex.toString());
                 swallowed = ex;
             }
         }
@@ -1010,8 +1006,7 @@ public abstract class HttpTask extends Task {
                                                 InputStream content)
             throws IOException {
 
-        log("uploading " + contentLength + " bytes of type " + contentType,
-                Project.MSG_VERBOSE);
+        log("uploading " + contentLength + " bytes of type " + contentType);
         //tell the connection we are in output mode
         connection.setDoOutput(true);
 
@@ -1033,7 +1028,7 @@ public abstract class HttpTask extends Task {
 
         while (remaining > 0) {
             int read = content.read(buffer);
-            log("block of " + read, Project.MSG_DEBUG);
+            log("block of " + read);
             toServer.write(buffer, 0, read);
             remaining -= read;
             if (verbose) {
@@ -1043,7 +1038,7 @@ public abstract class HttpTask extends Task {
         if (verbose) {
             showProgressChar('\n');
         }
-        log("upload completed", Project.MSG_DEBUG);
+        log("upload completed");
         return connection;
     }
 
