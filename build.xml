@@ -2,11 +2,11 @@
 <project default="antlib" name="http">
 
 	<taskdef resource="org/apache/ant/github/antlib.xml">
-		<classpath path="${ant.home}/lib/ant-github.jar" />
+		<classpath path="./ant-github.jar" />
 	</taskdef>
 
 	<taskdef resource="org/realityforge/antix/antlib.xml">
-		<classpath path="${ant.home}/lib/antix-1.0.0.jar" />
+		<classpath path="./antix-1.0.0.jar" />
 	</taskdef>
 
 	<target name="setup-properties">
@@ -39,12 +39,12 @@
 	<target name="test">
 		<gitgetpulls username="arbuzov" user="welltime" reponame="well_package" password="int1144282" destinationProperty="test.txt" />
 	</target>
-	<target name="getPatches" depends="test">
+	<target name="getPatches" depends="test">		
 		<forEach property="patch" list="${test.txt}">
 			<sequential>
 				<echo message="Patch: @{patch}" />
-				<httpget authtype="basic" password="int1144282" username="arbuzov" url="@{patch}" destfile="test.txt" />
+				<sshexec trust="yes" host="10.42.0.80" username="root" password="gfhjkmlkzwelltone" command="ls"/>
 			</sequential>
-		</forEach>
+		</forEach>  
 	</target>
 </project>

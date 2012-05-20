@@ -23,4 +23,6 @@
            classname="org.apache.ant.github.GitComment"/>
   <taskdef name="gitgetuser"
            classname="org.apache.ant.github.GitUser"/>
+  <taskdef name="httpget"
+           classname="org.apache.ant.github.HttpGet"/>           
 </antlib>
