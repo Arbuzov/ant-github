@@ -43,8 +43,9 @@
 		<forEach property="patch" list="${test.txt}">
 			<sequential>
 				<echo message="Patch: @{patch}" />
-				<sshexec trust="yes" host="10.42.0.80" username="root" password="gfhjkmlkzwelltone" command="ls"/>
+				<sshexec output="debug.txt" trust="yes" host="10.42.0.80" username="root" password="gfhjkmlkzwelltone" command="cd /var/www/well_package"/>
+				<sshexec output="debug.txt" trust="yes" host="10.42.0.80" username="root" password="gfhjkmlkzwelltone" command="ls -a"/>
 			</sequential>
-		</forEach>  
+		</forEach>
 	</target>
 </project>
