@@ -1,1 +1,17 @@
-fatal: Not a git repository (or any of the parent directories): .git
+.
+..
+.asterisk_history
+.bash_history
+.bash_logout
+.bash_profile
+.bashrc
+.cshrc
+.gitconfig
+.lesshst
+.mc
+.mysql_history
+.rnd
+.ssh
+.subversion
+.tcshrc
+.viminfo
