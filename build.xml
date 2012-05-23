@@ -43,8 +43,8 @@
 		<sshexec output="debug.txt" trust="yes" host="10.42.0.80" username="root" password="gfhjkmlkzwelltone" command="cd /var/www/well_package;git fetch"/>
 		<forEach property="patch" list="${test.txt}">
 			<sequential>
-				<echo message="Patch: @{patch}" />				
-<!--                <sshexec output="debug.txt" trust="yes" host="10.42.0.80" username="root" password="gfhjkmlkzwelltone" command="git checkout @{patch}"/> -->
+				<echo message="Patch: @{patch}" />
+				<sshexec output="debug.txt" trust="yes" host="10.42.0.80" username="root" password="gfhjkmlkzwelltone" command="cd /var/www/well_package"/>
 			</sequential>
 		</forEach>
 	</target>
