@@ -1,27 +1,17 @@
-Buildfile: D:\My Documents\git\ant-github\build.xml
-
-test:
-[gitgetpulls] https://api.github.com/repos/welltime/well_package/pulls
-[gitgetpulls] making GET to https://api.github.com/repos/welltime/well_package/pulls
-[gitgetpulls] Connecting to sun.net.www.protocol.https.DelegateHttpsURLConnection:https://api.github.com/repos/welltime/well_package/pulls
-[gitgetpulls] connected
-[gitgetpulls] Saving output to property test.txt
-[gitgetpulls] .
-
-getPatches:
-     [echo] Patch: https://github.com/welltime/well_package/pull/75.patch
-  [httpget] https://github.com/welltime/well_package/pull/75.patch
-  [httpget] making GET to https://github.com/welltime/well_package/pull/75.patch
-  [httpget] Connecting to sun.net.www.protocol.https.DelegateHttpsURLConnection:https://github.com/welltime/well_package/pull/75.patch
-  [httpget] connected
-  [httpget] Swallowed IO exception in getInputStream
-  [httpget] java.io.FileNotFoundException: https://github.com/welltime/well_package/pull/75.patch
-  [httpget] Swallowed IO exception in getInputStream
-  [httpget] java.io.FileNotFoundException: https://github.com/welltime/well_package/pull/75.patch
-  [httpget] Swallowed IO exception in getInputStream
-  [httpget] java.io.FileNotFoundException: https://github.com/welltime/well_package/pull/75.patch
-  [httpget] Swallowed IO exception in getInputStream
-  [httpget] java.io.FileNotFoundException: https://github.com/welltime/well_package/pull/75.patch
-  [httpget] Swallowed IO exception in getInputStream
-  [httpget] java.io.FileNotFoundException: https://github.com/welltime/well_package/pull/75.patch
-  [httpget] Error performing GET on https://github.com/welltime/well_package/pull/75.patch : java.io.FileNotFoundException: https://github.com/welltime/well_package/pull/75.patch
+.
+..
+.asterisk_history
+.bash_history
+.bash_logout
+.bash_profile
+.bashrc
+.cshrc
+.gitconfig
+.lesshst
+.mc
+.mysql_history
+.rnd
+.ssh
+.subversion
+.tcshrc
+.viminfo

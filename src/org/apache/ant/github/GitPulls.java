@@ -33,17 +33,19 @@ public class GitPulls extends HttpTask {
     }
 	
 	public String parseJson(String json) {
+
 		String patches="";
         try {
         	JSONArray jsob = new JSONArray(json.toString());
         	for(int i=0;i<jsob.length();i++)
-        	{
-        		patches+=(((JSONObject)jsob.get(i)).get("patch_url")+" ");
+        	{   
+        		JSONObject head = (JSONObject) (((JSONObject)jsob.get(i)).get("head")); 		
+        		patches+=((String) head.get("label")).replace(":", "/")+" ";
         	}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-        //System.out.println(out.toString().replace("}", "}\n").replace("]", "]\n\n").replace(",\"", "\n,\""));
+        //System.out.println(json.toString().replace("}", "}\n").replace("]", "]\n\n").replace(",\"", "\n,\""));
 		return patches;
 	}
 

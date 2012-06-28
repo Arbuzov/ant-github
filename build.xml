@@ -39,12 +39,13 @@
 	<target name="test">
 		<gitgetpulls username="arbuzov" user="welltime" reponame="well_package" password="int1144282" destinationProperty="test.txt" />
 	</target>
-	<target name="getPatches" depends="test">		
+	<target name="getPatches" depends="test">
+		<sshexec output="debug.txt" trust="yes" host="10.42.0.80" username="root" password="gfhjkmlkzwelltone" command="cd /var/www/well_package;git fetch"/>
 		<forEach property="patch" list="${test.txt}">
 			<sequential>
 				<echo message="Patch: @{patch}" />
-				<sshexec trust="yes" host="10.42.0.80" username="root" password="gfhjkmlkzwelltone" command="ls"/>
+				<sshexec output="debug.txt" trust="yes" host="10.42.0.80" username="root" password="gfhjkmlkzwelltone" command="cd /var/www/well_package"/>
 			</sequential>
-		</forEach>  
+		</forEach>
 	</target>
 </project>
